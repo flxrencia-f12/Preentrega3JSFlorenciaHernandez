@@ -1,0 +1,133 @@
+[
+    {
+        "id": "planta-2",
+        "titulo": "Aglaonema",
+        "img": "./img/plant13.jpg",
+        "categoria": {
+            "nombre": "Plantas",
+            "id": "plantas"
+        },
+         "precio": 9000
+    },
+    {
+        "id": "planta-3",
+        "titulo": "Zamioculca",
+        "img": "./img/plant14.jpg",
+        "categoria": {
+            "nombre": "Plantas",
+            "id": "plantas"
+        },
+        "precio": 17000
+    },
+    {
+        "id": "planta-4",
+        "titulo": "Dieffebanchia",
+        "img": "./img/plant2.jpg",
+        "categoria": {
+            "nombre": "Plantas",
+            "id": "plantas"
+        },
+        "precio": 9500
+    },
+    
+    {
+        "id": "planta-5",
+        "titulo": "Philodendron Xanadu",
+        "img": "./img/plant6.jpg",
+        "categoria": {
+            "nombre": "Plantas",
+            "id": "plantas"
+        },
+        "precio": 11000
+    },
+    {
+        "id": "planta-6",
+        "titulo": "Ficus Elastica",
+        "img": "./img/plant6.jpg",
+        "categoria": {
+            "nombre": "Plantas",
+            "id": "plantas"
+        },
+        "precio": 12000
+    },
+    {
+        "id": "planta-7",
+        "titulo": "Monstera",
+        "img": "./img/monstera.jpg",
+        "categoria": {
+            "nombre": "Plantas",
+            "id": "plantas"
+        },
+        "precio": 65000
+    },
+    {
+        "id": "planta-8",
+        "titulo": "Begonia",
+        "img": "./img/plant8.jpg",
+        "categoria": {
+            "nombre": "Plantas",
+            "id": "plantas"
+        },
+        "precio": 6000
+    },
+    {
+        "id": "maceta-1",
+        "titulo": "Maceta angel",
+        "img": "./img/maceta1.jpg",
+        "categoria": {
+            "nombre": "Macetas",
+            "id": "macetas"
+        },
+        "precio": 15000
+    },
+    {
+        "id": "maceta-2",
+        "titulo": "Maceta smoke",
+        "img": "./img/maceta2.jpg",
+        "categoria": {
+            "nombre": "Macetas",
+            "id": "macetas"
+        },
+        "precio": 20000
+    },
+    {
+        "id": "maceta-3",
+        "titulo": "Maceta vmv",
+        "img": "./img/maceta3.jpg",
+        "categoria": {
+            "nombre": "Macetas",
+            "id": "macetas"
+        },
+        "precio": 25000
+    },
+    {
+        "id": "maceta-4",
+        "titulo": "Maceta devil",
+        "img": "./img/maceta4.jpg",
+        "categoria": {
+            "nombre": "Macetas",
+            "id": "macetas"
+        },
+        "precio": 15000
+    },
+    {
+        "id": "maceta-5",
+        "titulo": "Maceta strange",
+        "img": "./img/maceta5.jpg",
+        "categoria": {
+            "nombre": "Macetas",
+            "id": "macetas"
+        },
+        "precio": 30000
+    },
+    {
+        "id": "maceta-6",
+        "titulo": "Maceta bucle",
+        "img": "./img/maceta6.jpg",
+        "categoria": {
+            "nombre": "Macetas",
+            "id": "macetas"
+        },
+        "precio": 30000
+    }
+    ]

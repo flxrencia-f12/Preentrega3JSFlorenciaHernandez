@@ -32,7 +32,7 @@
                                 <i class="bi bi-arrow-left-circle-fill"></i>Seguir comprando</a> </li>
 
                             <li><a class="boton-menu boton-carrito active" href="./carrito.html">
-                                <i class="bi bi-cart-fill"></i>Carrito<span class="numeros">0</span></a> </li>
+                                <i class="bi bi-cart-fill"></i>Carrito<span id="numerito" class="numero">0</span></a></li>
                                 
                             </li>
                         </ul>
@@ -48,7 +48,7 @@
             <h2 class="titulo-productos">CARRITO</h2>
 
             <div class="contenedor-carrito">
-                <p id="carrito-vacio" class="carrito-vacio disables">Tu carrito está vacio<i class="bi bi-emoji-tear"></i></p>
+                <p id="carrito-vacio" class="carrito-vacio disabled">Tu carrito está vacio<i class="bi bi-emoji-tear"></i></p>
               
 
                 <div id="contenedor-carrito-productos" class="carrito-productos disabled">
@@ -75,7 +75,7 @@
                         <p></p>
                        </div>
 
-                       <button class="carrito-producto-eliminar"><i class="bi bi-trash"></i></button>
+                       <button id="botones-eliminar" class="carrito-producto-eliminar"><i class="bi bi-trash"></i></button>
                     </div>
                 </div>
                 
@@ -94,8 +94,9 @@
 
                         </div>
                     </div>
+            </div>
                 
        
-    <script src="./js/carrito.js"></script>
+    <script src="../js/carrito.js"></script>
 </body>
 </html>
