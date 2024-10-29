@@ -1,159 +1,269 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    
 
 const productos = [
     {
-        id: "Planta-1",
+        id: "planta-1",
         titulo: "Potus Lemon",
-        precio: 14000,
         img: "./img/plant.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+         precio: 14000
     },
     {
-        id: "Planta-2",
+        id: "planta-2",
         titulo: "Aglaonema",
-        precio: 9000,
         img: "./img/plant13.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+         precio: 9000
     },
     {
-        id: "Planta-3",
+        id: "planta-3",
         titulo: "Zamioculca",
-        precio: 17000,
         img: "./img/plant14.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+        precio: 17000
     },
     {
-        id: "Planta-4",
+        id: "planta-4",
         titulo: "Dieffebanchia",
-        precio: 9500,
         img: "./img/plant2.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+        precio: 9500
     },
    
     {
-        id: "Planta-5",
+        id: "planta-5",
         titulo: "Philodendron Xanadu",
-        precio: 11000,
         img: "./img/plant6.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+        precio: 11000
     },
     {
-        id: "Planta-6",
+        id: "planta-6",
         titulo: "Ficus Elastica",
-        precio: 12000,
         img: "./img/plant6.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+        precio: 12000
     },
     {
-        id: "Planta-7",
+        id: "planta-7",
         titulo: "Monstera",
-        precio: 65000,
         img: "./img/monstera.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+        precio: 65000
     },
     {
-        id: "Planta-8",
+        id: "planta-8",
         titulo: "Begonia",
-        precio: 6000,
         img: "./img/plant8.jpg",
+        categoria: {
+            nombre: "Plantas",
+            id: "plantas"
+        },
+        precio: 6000
+    },
+    {
+        id: "maceta-1",
+        titulo: "Maceta angel",
+        img: "./img/maceta1.jpg",
+        categoria: {
+            nombre: "Macetas",
+            id: "macetas"
+        },
+        precio: 15000
+    },
+    {
+        id: "maceta-2",
+        titulo: "Maceta smoke",
+        img: "./img/maceta2.jpg",
+        categoria: {
+            nombre: "Macetas",
+            id: "macetas"
+        },
+        precio: 20000
+    },
+    {
+        id: "maceta-3",
+        titulo: "Maceta vmv",
+        img: "./img/maceta3.jpg",
+        categoria: {
+            nombre: "Macetas",
+            id: "macetas"
+        },
+        precio: 25000
+    },
+    {
+        id: "maceta-4",
+        titulo: "Maceta devil",
+        img: "./img/maceta4.jpg",
+        categoria: {
+            nombre: "Macetas",
+            id: "macetas"
+        },
+        precio: 15000
+    },
+    {
+        id: "maceta-5",
+        titulo: "Maceta strange",
+        img: "./img/maceta5.jpg",
+        categoria: {
+            nombre: "Macetas",
+            id: "macetas"
+        },
+        precio: 30000
+    },
+    {
+        id: "maceta-6",
+        titulo: "Maceta bucle",
+        img: "./img/maceta6.jpg",
+        categoria: {
+            nombre: "Macetas",
+            id: "macetas"
+        },
+        precio: 30000
     }
-]
+];
 
 
-const contenedorProductos = document.querySelector("#compra");
-const carritoVacio = document.querySelector("#carrito-vacio");
-const carritoProductos = document.querySelector("#carrito-productos");
-const carritoTotal = document.querySelector("#carrito-total #total");
+const contenedorProductos = document.querySelector("#contenedor-productos");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
+let botonesAgregar = document.querySelectorAll(".producto-btn");
+const numerito = document.querySelector("#numerito");
 
 
 
-productos.forEach(producto => {
-    let div = document.createElement("div");
-    div.classList.add("planta");
-    div.innerHTML = `
-    <img class="producto-img" src=${producto.img}>
-    <h3>${producto.titulo}</h3>
-    <p>$${producto.precio}</p>
 
-   `;
+function cargarProductos(productosSeleccionados) {
 
-   let button = document.createElement("button");
-   button.classList.add("producto-btn");
-   button.innerText = "Agregar al carrito";
-   button.addEventListener("click", () => {
-    agregarAlCarrito(producto);
-   });
+    contenedorProductos.innerHTML = "";
 
-   div.append(button);
-   contenedorProductos.append(div);
+    productosSeleccionados.forEach(producto => {
+
+        const div = document.createElement("div");
+        div.classList.add("planta");
+        div.innerHTML = `
+        <div class="planta" id="${producto.id}">
+        <img class="producto-img" src=${producto.img}>
+        <h3>${producto.titulo}</h3>
+        <p>Precio: $${producto.precio}</p>
+        <button class="producto-btn" id="${producto.id}">Agregar al carrito</button>
+        </div>
+    
+    
+       `;
+
+       contenedorProductos.append(div);
+
+    })
+
+    actualizarBotonesAgregar();
+}
+
+ cargarProductos(productos);
+
+botonesCategorias.forEach(boton => {
+    boton.addEventListener("click", (e) => {
+
+        botonesCategorias.forEach(boton => boton.classList.remove("active"));
+        e.currentTarget.classList.add("active");
+
+        if(e.currentTarget.id != "todos") {
+            const productosSeleccionados = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
+            cargarProductos(productosSeleccionados);
+          } else {
+            cargarProductos(productos);
+          }
+
+        
+    });
+ });
+
+ function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-btn");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito);
+
+    });
+
+ }
+
+ let productosEnCarrito;
+ 
+
+ const productosEnCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito"));
+
+ if (productosEnCarritoLS) {
+    productosEnCarrito = productosEnCarritoLS;
+    actualizarNumerito();
+ } else {
+    productosEnCarrito = [];
+ }
+
+ 
+
+
+ function agregarAlCarrito(e) {
+
+    const idBoton = e.currentTarget.id;
+    const productoAgregado = { ...productos.find(producto => producto.id === idBoton) };
+
+    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+        productosEnCarrito[index].cantidad++;
+
+    } else {
+        productoAgregado.cantidad = 1;
+        productosEnCarrito.push(productoAgregado);
+
+    }
+
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+        actualizarNumerito();
+    }
+
+   function actualizarNumerito() {
+    const totalProductos = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+        numerito.innerText = totalProductos;
+   }
+   actualizarNumerito();
+});
+
+
 
     
-});
-
-function actualizarCarrito() {
-    carritoProductos.innerHTML = '';
-    if (carrito.length === 0) {
-        carritoVacio.classList.remove("d-none");
-        carritoProductos.classList.add("d-none");
-    } else {
-        carritoVacio.classList.add("d-none");
-        carritoProductos.classList.remove("d-none");
-
-        carrito.forEach((producto) => {
-            let div = document.createElement("div");
-            div.classList.add("carrito-producto");
-            div.innerHTML = `
-            <h3>${producto.titulo}</h3>
-            <p>${producto.precio}</p>
-            <p>Cant: ${producto.cantidad}</p>
-            <p>Subt: ${producto.precio * producto.cantidad}</p>
-            `;
-
-let button = document.createElement("button");
-button.classList.add("carrito-producto-btn");
-button.innerText = "❌";
-button.addEventListener("click", () => {
-    borrarDelCarrito(producto)
-});
-
-div.append(button);
-carritoProductos.append(div);
-
-        });
-
-    }
-    actualizarTotal();
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-}
-
-function agregarAlCarrito(producto) {
-    let itemEncontrado = carrito.find((item) => item.id === producto.id);
-
-    if (itemEncontrado) {
-        itemEncontrado.cantidad++;
-    } else {
-    carrito.push({...producto, cantidad: 1});
-    }
-
-    actualizarCarrito();
-    actualizarTotal();
-
-
-}
 
 
 
-function borrarDelCarrito(producto) {
-let indice = carrito.findIndex((item) => item.id === producto.id);
-if (indice !== -1) {
-carrito.splice(indice, 1);
 
-}
+ 
+       
+    
+    
 
-actualizarCarrito();
-actualizarTotal();
-}
+ 
 
-function actualizarTotal() {
-    let total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
-    document.getElementById("carrito-total").innerText = `$${total.toFixed(2)}`;
-}
 
-actualizarCarrito();
 
-});
